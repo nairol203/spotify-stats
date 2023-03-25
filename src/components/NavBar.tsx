@@ -8,7 +8,7 @@ export default function NavBar() {
 	const { data: session } = useSession();
 
 	return (
-		<nav className='fixed top-0 z-10 flex h-14 w-full items-center gap-8 bg-card px-4 shadow-sm dark:bg-darkMode-card'>
+		<nav className='fixed top-0 z-10 flex h-14 w-full items-center gap-8  bg-card px-4 shadow-sm dark:bg-darkMode-card'>
 			<Link href={session?.user.image ? `/user/${session.user.id}` : '/'}>
 				<Image
 					src={session?.user.image ?? '/logo.png'}
