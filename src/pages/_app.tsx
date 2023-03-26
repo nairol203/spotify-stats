@@ -36,11 +36,17 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 				<meta name='twitter:creator' content='@nairol203' />
 				<meta name='twitter:ccrard' content='summary' />
 			</Head>
-			<NavBar />
-			<main className='mx-4 mt-14 min-h-screen'>
-				<Component {...pageProps} />
-			</main>
-			<Footer />
+			<div className='grid h-screen'>
+				<div className='overflow-y-auto md:grid md:grid-cols-[15rem_1fr]'>
+					<NavBar />
+					<main className='relative overflow-y-auto'>
+						<div className='mx-4'>
+							<Component {...pageProps} />
+							<Footer />
+						</div>
+					</main>
+				</div>
+			</div>
 		</SessionProvider>
 	);
 }
