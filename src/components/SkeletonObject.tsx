@@ -1,7 +1,7 @@
 const SkeletonObject: React.FC<{ type: 'track' | 'album' | 'albumCard' | 'trackRecently'; ranking?: boolean }> = ({ type, ranking }) => {
 	if (type == 'trackRecently') {
 		return (
-			<div className=' grid  grid-cols-[6fr_1fr] items-center justify-between gap-2 rounded-[4px] p-2 px-4 hover:bg-white  hover:bg-opacity-10 lg:grid-cols-[7fr_2fr_1fr]'>
+			<div className=' grid  grid-cols-[6fr_1fr] items-center justify-between gap-2 rounded p-2 px-4 hover:bg-white  hover:bg-opacity-10 lg:grid-cols-[7fr_2fr_1fr]'>
 				<div className='flex items-center gap-4'>
 					<div className='skeleton h-[50px] w-[50px]'></div>
 					<div>
@@ -26,7 +26,7 @@ const SkeletonObject: React.FC<{ type: 'track' | 'album' | 'albumCard' | 'trackR
 	if (type == 'albumCard') {
 		return (
 			<div>
-				<div className='grid max-w-[calc(150px+2rem)] gap-2 rounded-md bg-black p-4 hover:bg-white hover:bg-opacity-10'>
+				<div className='grid max-w-[calc(150px+2rem)] gap-2 rounded bg-black p-4 hover:bg-white hover:bg-opacity-10'>
 					<div className='skeleton h-[150px] w-[150px]'></div>
 					<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem, ipsum.</h3>
 					<div className='flex gap-1.5'>
@@ -38,7 +38,7 @@ const SkeletonObject: React.FC<{ type: 'track' | 'album' | 'albumCard' | 'trackR
 	}
 
 	return (
-		<div className='flex items-center justify-between gap-2 rounded-[4px] p-2 px-4  hover:bg-white hover:bg-opacity-10'>
+		<div className='flex items-center justify-between gap-2 rounded p-2 px-4  hover:bg-white hover:bg-opacity-10'>
 			<div className='flex items-center gap-4'>
 				{ranking && <div className='skeleton flex w-5 justify-center'>1</div>}
 				<div className='skeleton h-[50px] w-[50px]'></div>
@@ -60,7 +60,7 @@ const SkeletonObject: React.FC<{ type: 'track' | 'album' | 'albumCard' | 'trackR
 
 const SkeletonObjectDetailed: React.FC<{ type: 'track' | 'album'; ranking?: boolean }> = ({ type, ranking }) => {
 	return (
-		<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center gap-4 rounded-[4px] px-4 py-2 md:hover:bg-white md:hover:bg-opacity-10 lg:grid-cols-[1.25rem_6fr_4fr_3fr_1fr]'>
+		<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center gap-4 rounded px-4 py-2 md:hover:bg-white md:hover:bg-opacity-10 lg:grid-cols-[1.25rem_6fr_4fr_3fr_1fr]'>
 			{ranking && <div className='skeleton flex w-5 justify-center'>1</div>}
 			<div className='flex items-center gap-4'>
 				<div className='skeleton h-[50px] w-[50px]'></div>

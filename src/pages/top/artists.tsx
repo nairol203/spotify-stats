@@ -34,10 +34,10 @@ export default function Home() {
 				<div>
 					{topTracks.data ? (
 						topTracks.data.items.map((artist, index) => (
-							<div className='grid grid-cols-[1.25rem_1fr] items-center gap-4 rounded-[4px] px-4 py-2' key={artist.id}>
+							<div className='grid grid-cols-[1.25rem_1fr] items-center gap-4 rounded px-4 py-2' key={artist.id}>
 								<div className='flex w-5 justify-center'>{index + 1}</div>
 								<div className='flex items-center gap-4 overflow-hidden text-ellipsis whitespace-nowrap'>
-									<img className='rounded-sms aspect-square max-w-none' src={artist.images[0].url} height={50} width={50} alt='Album Cover' />
+									<img className='aspect-square max-w-none rounded' src={artist.images[0].url} height={50} width={50} alt='Album Cover' />
 									<h3 className='overflow-hidden text-ellipsis'>{artist.name}</h3>
 								</div>
 							</div>
