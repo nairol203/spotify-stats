@@ -274,7 +274,7 @@ const TopGenresCard: React.FC<{}> = ({}) => {
 			<div className='flex flex-col gap-2'>
 				{topGenres ? (
 					topGenres.slice(0, 8).map((item, index) => (
-						<h3 className='capitalize'>
+						<h3 className='capitalize' key={item.genre}>
 							{index + 1}. {item.genre}
 						</h3>
 					))
