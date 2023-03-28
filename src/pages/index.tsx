@@ -2,6 +2,7 @@ import { faChartLine, faClockRotateLeft, faPersonDigging, faPlus } from '@fortaw
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { calculateTopGenres } from '@lib/helpers';
 import { trpc } from '@lib/trpc';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { SPOTIFY_RANGE } from 'src/server/routers/_app';
@@ -41,7 +42,7 @@ const RecentlyPlayedCard: React.FC<{}> = ({}) => {
 				{recentTracks.data ? (
 					recentTracks.data.items.map(item => (
 						<div className='flex items-center gap-2 overflow-hidden text-ellipsis' key={item.track.id}>
-							<img src={item.track.album.images[0].url} height={40} width={40} className='rounded' />
+							<Image src={item.track.album.images[0].url} height={40} width={40} className='rounded' alt='Album Cover' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{item.track.name}</h3>
 						</div>
 					))
@@ -120,7 +121,7 @@ const TopTracksCard: React.FC<{}> = ({}) => {
 				{topTracks.data ? (
 					topTracks.data.items.map(track => (
 						<div className='flex items-center gap-2 overflow-hidden text-ellipsis' key={track.id}>
-							<img src={track.album.images[0].url} height={40} width={40} className='rounded ' />
+							<Image src={track.album.images[0].url} height={40} width={40} className='rounded' alt='Album Cover' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{track.name}</h3>
 						</div>
 					))
@@ -195,7 +196,7 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
 				{topArtists.data ? (
 					topArtists.data.items.map(artist => (
 						<div className='flex items-center gap-2 overflow-hidden text-ellipsis' key={artist.id}>
-							<img src={artist.images[0].url} height={40} width={40} className='aspect-square rounded' />
+							<Image src={artist.images[0].url} height={40} width={40} className='aspect-square rounded' alt='Artist Profile Picture' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{artist.name}</h3>
 						</div>
 					))

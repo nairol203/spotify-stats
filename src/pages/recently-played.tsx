@@ -3,6 +3,7 @@ import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { calcTime, msToString } from '@lib/helpers';
 import { trpc } from '@lib/trpc';
+import Image from 'next/image';
 
 export default function Home() {
 	const recentTracks = trpc.recentlyPlayed.useQuery({});
@@ -24,7 +25,7 @@ export default function Home() {
 						recentTracks.data.items.map((item, index) => (
 							<div className='grid grid-cols-[6fr_1fr] items-center justify-between gap-2 rounded py-2 lg:grid-cols-[7fr_2fr_1fr]' key={item.track.id + index}>
 								<div className='flex items-center gap-4 overflow-hidden text-ellipsis whitespace-nowrap'>
-									<img className='aspect-square max-w-none rounded' src={item.track.album.images[0].url} height={50} width={50} alt='Album Cover' />
+									<Image className='aspect-square max-w-none rounded' src={item.track.album.images[0].url} height={50} width={50} alt='Album Cover' />
 									<div className='overflow-hidden text-ellipsis'>
 										<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{item.track.name}</h3>
 										<div className='flex flex-wrap items-center gap-1'>
