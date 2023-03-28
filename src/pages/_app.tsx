@@ -1,5 +1,4 @@
 import Footer from '@components/Footer';
-import MobileNav from '@components/MobileNav';
 import NavBar from '@components/NavBar';
 import { trpc } from '@lib/trpc';
 import { SessionProvider } from 'next-auth/react';
@@ -37,13 +36,10 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 				<meta name='twitter:creator' content='@nairol203' />
 				<meta name='twitter:ccrard' content='summary' />
 			</Head>
-			<div className='grid h-screen bg-red-300 dark:bg-red-500/60 '>
-				<div className='md:hidden'>
-                    <MobileNav />
-                </div>
-				<div className='overflow-y-auto md:grid md:grid-cols-[15rem_1fr]'>
+			<div className='h-screen'>
+				<div className='md:overflow-y-auto md:grid md:grid-cols-[15rem_1fr] bg-red-300 dark:bg-red-500/60'>
 					<NavBar />
-					<main className='relative overflow-y-auto'>
+					<main className='overflow-y-auto'>
 						<div className='mx-4'>
 							<Component {...pageProps} />
 							<Footer />
