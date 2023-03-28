@@ -2,6 +2,7 @@ import { SkeletonObjectDynamic } from '@components/SkeletonObject';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { trpc } from '@lib/trpc';
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { SPOTIFY_RANGE } from 'src/server/routers/_app';
 import { z } from 'zod';
@@ -43,7 +44,7 @@ export default function Home() {
 							<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center justify-between gap-4 rounded py-2' key={track.id + index}>
 								<span className='flex w-5 justify-center'>{index + 1}</span>
 								<div className='flex items-center gap-4 overflow-hidden text-ellipsis whitespace-nowrap'>
-									<img className='aspect-square max-w-none rounded' src={track.album.images[0].url} height={50} width={50} alt='Album Cover' />
+									<Image className='aspect-square max-w-none rounded' src={track.album.images[0].url} height={50} width={50} alt='Album Cover' />
 									<div className='overflow-hidden text-ellipsis'>
 										<h3 className='overflow-hidden text-ellipsis'>{track.name}</h3>
 										<div className='flex flex-wrap items-center gap-x-1'>

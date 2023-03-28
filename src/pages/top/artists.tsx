@@ -1,12 +1,13 @@
 import { SkeletonObjectDynamic } from '@components/SkeletonObject';
 import { trpc } from '@lib/trpc';
+import Image from 'next/image';
 import { useState } from 'react';
 import { SPOTIFY_RANGE } from 'src/server/routers/_app';
 import { z } from 'zod';
 
 export default function Home() {
 	const [range, setRange] = useState<z.infer<typeof SPOTIFY_RANGE>>('short_term');
-	const topTracks = trpc.topArtists.useQuery({ range });
+	const topArtists = trpc.topArtists.useQuery({ range });
 
 	return (
 		<div className='my-4 grid gap-4 rounded-xl bg-white/25 p-6 py-4 shadow-md backdrop-blur-lg'>
@@ -32,12 +33,12 @@ export default function Home() {
 				</div>
 				<div className='mb-4 h-0.5 w-full rounded-full bg-gray-400/10' />
 				<div>
-					{topTracks.data ? (
-						topTracks.data.items.map((artist, index) => (
+					{topArtists.data ? (
+						topArtists.data.items.map((artist, index) => (
 							<div className='grid grid-cols-[1.25rem_1fr] items-center gap-4 rounded py-2' key={artist.id}>
 								<div className='flex w-5 justify-center'>{index + 1}</div>
 								<div className='flex items-center gap-4 overflow-hidden text-ellipsis whitespace-nowrap'>
-									<img className='aspect-square max-w-none rounded' src={artist.images[0].url} height={50} width={50} alt='Album Cover' />
+									<Image className='aspect-square max-w-none rounded' src={artist.images[0].url} height={50} width={50} alt='Artist Profile Picture' />
 									<h3 className='overflow-hidden text-ellipsis'>{artist.name}</h3>
 								</div>
 							</div>
