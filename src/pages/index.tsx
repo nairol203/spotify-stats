@@ -34,11 +34,8 @@ const RecentlyPlayedCard: React.FC<{}> = ({}) => {
 			</div>
 			<div className='flex flex-col gap-2'>
 				{recentTracks.data ? (
-					recentTracks.data.items.map((item, index, array) => (
-						<div
-							className={`${index + 1 === array.length && 'bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent'} flex items-center gap-2`}
-							key={item.track.id}
-						>
+					recentTracks.data.items.map(item => (
+						<div className='flex items-center gap-2' key={item.track.id}>
 							<img src={item.track.album.images[0].url} height={40} width={40} className='rounded-sm' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{item.track.name}</h3>
 						</div>
@@ -116,11 +113,8 @@ const TopTracksCard: React.FC<{}> = ({}) => {
 			</div>
 			<div className='flex flex-col gap-2'>
 				{topTracks.data ? (
-					topTracks.data.items.map((track, index, array) => (
-						<div
-							className={`${index + 1 === array.length && 'bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent'} flex items-center gap-2`}
-							key={track.id}
-						>
+					topTracks.data.items.map(track => (
+						<div className='flex items-center gap-2' key={track.id}>
 							<img src={track.album.images[0].url} height={40} width={40} className='rounded-sm ' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{track.name}</h3>
 						</div>
@@ -194,11 +188,8 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
 			</div>
 			<div className='flex flex-col gap-2'>
 				{topArtists.data ? (
-					topArtists.data.items.map((artist, index, array) => (
-						<div
-							className={`${index + 1 === array.length && 'bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent'} flex items-center gap-2`}
-							key={artist.id}
-						>
+					topArtists.data.items.map(artist => (
+						<div className='flex items-center gap-2' key={artist.id}>
 							<img src={artist.images[0].url} height={40} width={40} className='aspect-square rounded-sm' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{artist.name}</h3>
 						</div>
