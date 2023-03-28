@@ -2,17 +2,29 @@ import { faArrowUpRightFromSquare, faCaretDown, faCaretUp } from '@fortawesome/f
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function UserDropdown() {
 	const { data: session } = useSession();
 	const [active, setActive] = useState(false);
+	const dropdownRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		function handleClickOutside(event: MouseEvent) {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+				setActive(false);
+			}
+		}
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [dropdownRef]);
 
 	if (!session || !session?.user.image) return <></>;
 
 	return (
-		<div className='fixed top-4 right-8 z-10 hidden gap-2 md:grid'>
+		<div className='fixed top-4 right-8 z-10 hidden gap-2 md:grid' ref={dropdownRef}>
 			<div className='relative rounded-3xl bg-violet-500 shadow'>
 				<button className='flex items-center gap-2 rounded-3xl bg-white/25 p-0.5 pr-1.5' onClick={() => setActive(!active)}>
 					<Image src={session?.user.image} height={30} width={30} alt='User Profile Picture' className='aspect-square rounded-full' />
