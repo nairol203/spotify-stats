@@ -2,7 +2,6 @@ import { SkeletonObjectDynamic } from '@components/SkeletonObject';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { trpc } from '@lib/trpc';
-import Link from 'next/link';
 import React, { useState } from 'react';
 import { SPOTIFY_RANGE } from 'src/server/routers/_app';
 import { z } from 'zod';
@@ -49,16 +48,14 @@ export default function Home() {
 								<div className='flex items-center gap-4 overflow-hidden text-ellipsis whitespace-nowrap'>
 									<img className='aspect-square max-w-none rounded-sm' src={track.album.images[0].url} height={50} width={50} alt='Album Cover' />
 									<div className='overflow-hidden text-ellipsis'>
-										<Link href={`/track/${track.id}`} className='overflow-hidden text-ellipsis hover:underline'>
-											<h3 className='overflow-hidden text-ellipsis'>{track.name}</h3>
-										</Link>
+										<h3 className='overflow-hidden text-ellipsis'>{track.name}</h3>
 										<div className='flex flex-wrap items-center gap-x-1'>
 											{track.explicit && <span className='rounded-sm bg-slate-300 py-[1px] px-[5.5px] text-[10px] text-black'>E</span>}
 											{track.artists.map((artist, index) => (
 												<div className='text-gray-300' key={artist.id + index}>
-													<Link className='text-sm hover:underline' href={`/artist/${artist.id}`} key={artist.id}>
+													<span className='text-sm' key={artist.id}>
 														{artist.name}
-													</Link>
+													</span>
 													{index < track.artists.length - 1 && ','}
 												</div>
 											))}

@@ -14,7 +14,7 @@ export default function Home() {
 				<TopTracksCard />
 				<TopArtistsCard />
 			</div>
-			<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
+			<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
 				<h2>More stats are coming soon!</h2>
 			</div>
 		</div>
@@ -25,7 +25,7 @@ const RecentlyPlayedCard: React.FC<{}> = ({}) => {
 	const recentTracks = trpc.recentlyPlayed.useQuery({ limit: 6 });
 
 	return (
-		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
+		<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faClockRotateLeft} height={20} width={20} />
 				<h2>Recently Played</h2>
