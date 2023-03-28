@@ -10,7 +10,7 @@ export const appRouter = router({
 		.input(
 			z.object({
 				range: SPOTIFY_RANGE,
-				limit: z.optional(z.string()),
+				limit: z.optional(z.number()),
 			})
 		)
 		.query(async ({ ctx, input }) => {
@@ -27,7 +27,7 @@ export const appRouter = router({
 		.input(
 			z.object({
 				range: SPOTIFY_RANGE,
-				limit: z.optional(z.string()),
+				limit: z.optional(z.number()),
 			})
 		)
 		.query(async ({ ctx, input }) => {
@@ -41,8 +41,14 @@ export const appRouter = router({
 
 			return (await res.json()) as SpotifyApi.UsersTopArtistsResponse;
 		}),
-	recentlyPlayed: procedure.query(async ({ ctx }) => {
-		const res = await fetch(`${API_ENDPOINT}/me/player/recently-played?limit=50`, {
+	recentlyPlayed: procedure
+	.input(
+		z.object({
+			limit: z.optional(z.number()),
+		})
+	)
+	.query(async ({ ctx, input }) => {
+		const res = await fetch(`${API_ENDPOINT}/me/player/recently-played?limit=${input.limit || 50}`, {
 			method: 'GET',
 			headers: {
 				Authorization: `Bearer ${ctx.session?.user?.access_token}`,
