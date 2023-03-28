@@ -48,9 +48,13 @@ export default function Home() {
 									<div className='overflow-hidden text-ellipsis'>
 										<h3 className='overflow-hidden text-ellipsis'>{track.name}</h3>
 										<div className='flex flex-wrap items-center gap-x-1'>
-											{track.explicit && <span className='rounded bg-slate-300 py-[1px] px-[5.5px] text-[10px] text-black'>E</span>}
+											{track.explicit && (
+												<span className='rounded bg-slate-300 py-[1px] px-[5.5px] text-[10px] text-black' aria-label='Explicit'>
+													E
+												</span>
+											)}
 											{track.artists.map((artist, index) => (
-												<div className='text-gray-300' key={artist.id + index}>
+												<div key={artist.id + index}>
 													<span className='text-sm' key={artist.id}>
 														{artist.name}
 													</span>
