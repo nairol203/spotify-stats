@@ -27,11 +27,11 @@ export default function Home() {
 				</button>
 			</div>
 			<div>
-				<div className='grid grid-cols-[1.25rem_1fr] items-center gap-4 py-2 text-gray-200'>
+				<div className='grid grid-cols-[1.25rem_1fr] items-center gap-4 py-2'>
 					<span className='flex justify-center'>#</span>
 					<span>Artist</span>
 				</div>
-				<div className='mb-4 h-0.5 w-full rounded-full bg-gray-400/10' />
+				<div className='mb-4 h-[1px] w-full rounded-full bg-white/30' />
 				<div>
 					{topArtists.data ? (
 						topArtists.data.items.map((artist, index) => (
