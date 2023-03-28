@@ -8,11 +8,14 @@ import { z } from 'zod';
 
 export default function Home() {
 	return (
-		<div className='min-h-screen py-4'>
+		<div className='flex min-h-screen flex-col gap-4 py-4'>
 			<div className='grid flex-wrap gap-4 md:flex'>
 				<RecentlyPlayedCard />
 				<TopTracksCard />
 				<TopArtistsCard />
+			</div>
+			<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
+				<h2>More stats are coming soon!</h2>
 			</div>
 		</div>
 	);
