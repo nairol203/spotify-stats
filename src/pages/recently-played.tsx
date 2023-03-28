@@ -12,14 +12,14 @@ export default function Home() {
 		<div className='my-4 grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<h1>Recently Played</h1>
 			<div>
-				<div className='grid grid-cols-[6fr_1fr] items-center gap-4 py-2 text-gray-200 lg:grid-cols-[7fr_2fr_1fr]'>
+				<div className='grid grid-cols-[6fr_1fr] items-center gap-4 py-2 lg:grid-cols-[7fr_2fr_1fr]'>
 					<span>Title</span>
 					<span className='hidden lg:block'>Played at</span>
 					<span className='flex justify-end'>
 						<FontAwesomeIcon icon={faClock} height={20} width={20} />
 					</span>
 				</div>
-				<div className='mb-4 h-0.5 w-full rounded-full bg-gray-400/10' />
+				<div className='mb-4 h-[1px] w-full rounded-full bg-white/30' />
 				<div>
 					{recentTracks.data ? (
 						recentTracks.data.items.map((item, index) => (

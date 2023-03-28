@@ -30,14 +30,14 @@ export default function Home() {
 				</button>
 			</div>
 			<div>
-				<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center gap-4 py-2 text-gray-200'>
+				<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center gap-4 py-2'>
 					<span className='flex justify-center'>#</span>
 					<span>Title</span>
 					<span className='flex justify-end'>
 						<FontAwesomeIcon icon={faClock} height={20} width={20} />
 					</span>
 				</div>
-				<div className='mb-4 h-0.5 w-full rounded-full bg-gray-400/10' />
+				<div className='mb-4 h-[1px] w-full rounded-full bg-white/30' />
 				<div>
 					{topTracks.data ? (
 						topTracks.data.items.map((track, index) => (
