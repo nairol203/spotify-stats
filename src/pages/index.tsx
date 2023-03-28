@@ -31,7 +31,9 @@ const RecentlyPlayedCard: React.FC<{}> = ({}) => {
                 {recentTracks.data ? (
                     recentTracks.data.items.map((item, index, array) => (
                         <div
-                            className={`${index + 1 === array.length && 'bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent'} flex items-center gap-2`}
+                            className={`${
+                                index + 1 === array.length && 'bg-gradient-to-b from-black to-transparent bg-clip-text text-transparent dark:from-white'
+                            } flex items-center gap-2`}
                             key={item.track.id}
                         >
                             <img src={item.track.album.images[0].url} height={40} width={40} className='rounded-sm' />
@@ -113,7 +115,9 @@ const TopTracksCard: React.FC<{}> = ({}) => {
                 {topTracks.data ? (
                     topTracks.data.items.map((track, index, array) => (
                         <div
-                            className={`${index + 1 === array.length && 'bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent'} flex items-center gap-2`}
+                            className={`${
+                                index + 1 === array.length && 'bg-gradient-to-b from-black to-transparent bg-clip-text text-transparent dark:from-white'
+                            } flex items-center gap-2`}
                             key={track.id}
                         >
                             <img src={track.album.images[0].url} height={40} width={40} className='rounded-sm ' />
@@ -191,7 +195,9 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
                 {topArtists.data ? (
                     topArtists.data.items.map((artist, index, array) => (
                         <div
-                            className={`${index + 1 === array.length && 'bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent'} flex items-center gap-2`}
+                            className={`${
+                                index + 1 === array.length && 'bg-gradient-to-b from-black to-transparent bg-clip-text text-transparent dark:from-white'
+                            } flex items-center gap-2`}
                             key={artist.id}
                         >
                             <img src={artist.images[0].url} height={40} width={40} className='aspect-square rounded-sm' />
