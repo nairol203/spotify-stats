@@ -12,15 +12,15 @@ export default function UserDropdown() {
 	if (!session || !session?.user.image) return <></>;
 
 	return (
-		<div className='fixed z-10 top-4 right-8 hidden gap-2 md:grid'>
-			<div className='relative bg-violet-500 rounded-3xl shadow'>
+		<div className='fixed top-4 right-8 z-10 hidden gap-2 md:grid'>
+			<div className='relative rounded-3xl bg-violet-500 shadow'>
 				<button className='flex items-center gap-2 rounded-3xl bg-white/25 p-0.5' onClick={() => setActive(!active)}>
 					<Image src={session?.user.image} height={30} width={30} alt='User Profile Picture' className='aspect-square rounded-full' />
 					<span>{session.user.name}</span>
 					<FontAwesomeIcon height={20} width={20} icon={active ? faCaretUp : faCaretDown} />
 				</button>
 				{active && (
-					<div className='absolute top-10 right-0  bg-violet-500'>
+					<div className='absolute top-10 right-0 rounded bg-violet-500 shadow'>
 						<div className='flex w-44 flex-col rounded bg-white/25 p-1'>
 							<a
 								onClick={() => setActive(false)}
