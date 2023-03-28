@@ -12,7 +12,7 @@ export default function Home() {
 	const topTracks = trpc.topTracks.useQuery({ range });
 
 	return (
-		<div className='grid gap-4 py-4'>
+		<div className='my-4 grid gap-4 rounded-xl bg-white/25 p-6 py-4 shadow-md backdrop-blur-lg'>
 			<h1>Top Tracks</h1>
 			<div className='flex justify-center gap-10 sm:justify-start sm:gap-6'>
 				<button className={`${range === 'short_term' ? 'underline' : 'opacity-80'} decoration-1 underline-offset-8 hover:underline`} onClick={() => setRange('short_term')}>
@@ -29,18 +29,18 @@ export default function Home() {
 				</button>
 			</div>
 			<div>
-				<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center gap-4 px-4 py-2 text-gray-200'>
+				<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center gap-4 py-2 text-gray-200'>
 					<span className='flex justify-center'>#</span>
 					<span>Title</span>
 					<span className='flex justify-end'>
 						<FontAwesomeIcon icon={faClock} height={20} width={20} />
 					</span>
 				</div>
-				<div className='mb-4 h-0.5 w-full rounded-full bg-gray-400 bg-opacity-10' />
+				<div className='mb-4 h-0.5 w-full rounded-full bg-gray-400/10' />
 				<div>
 					{topTracks.data ? (
 						topTracks.data.items.map((track, index) => (
-							<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center justify-between gap-4 rounded px-4 py-2' key={track.id + index}>
+							<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center justify-between gap-4 rounded py-2' key={track.id + index}>
 								<span className='flex w-5 justify-center'>{index + 1}</span>
 								<div className='flex items-center gap-4 overflow-hidden text-ellipsis whitespace-nowrap'>
 									<img className='aspect-square max-w-none rounded' src={track.album.images[0].url} height={50} width={50} alt='Album Cover' />
