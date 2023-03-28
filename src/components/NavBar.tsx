@@ -8,7 +8,7 @@ export default function NavBar() {
 	const router = useRouter();
 
 	return (
-		<nav className='background-blur-lg m-4 mb-0 flex flex-col  gap-4 overflow-y-auto rounded-lg bg-white/25 py-4 px-3 shadow-md md:mr-0 md:mb-4'>
+		<nav className='background-blur-lg m-4 mb-0 flex flex-col gap-4 overflow-y-auto rounded-lg bg-white/25 py-4 px-3 shadow-md md:mr-0 md:mb-4'>
 			<Link href='/' className='flex items-center gap-3'>
 				{
 					// @ts-expect-error
