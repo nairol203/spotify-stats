@@ -29,16 +29,16 @@ const RecentlyPlayedCard: React.FC<{}> = ({}) => {
 	const recentTracks = trpc.recentlyPlayed.useQuery({ limit: 6 });
 
 	return (
-		<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faClockRotateLeft} height={20} width={20} />
 				<h2>Recently Played</h2>
 			</div>
-			<div className='flex flex-col gap-2'>
+			<div className='grid gap-2'>
 				{recentTracks.data ? (
 					recentTracks.data.items.map(item => (
-						<div className='flex items-center gap-2' key={item.track.id}>
-							<img src={item.track.album.images[0].url} height={40} width={40} className='rounded-sm' />
+						<div className='flex items-center gap-2 overflow-hidden text-ellipsis' key={item.track.id}>
+							<img src={item.track.album.images[0].url} height={40} width={40} className='rounded' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{item.track.name}</h3>
 						</div>
 					))
@@ -86,7 +86,7 @@ const TopTracksCard: React.FC<{}> = ({}) => {
 	const topTracks = trpc.topTracks.useQuery({ range, limit: 5 });
 
 	return (
-		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+		<div className='grid cursor-default gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Tracks</h2>
@@ -113,11 +113,11 @@ const TopTracksCard: React.FC<{}> = ({}) => {
 					All time
 				</button>
 			</div>
-			<div className='flex flex-col gap-2'>
+			<div className='grid gap-2'>
 				{topTracks.data ? (
 					topTracks.data.items.map(track => (
 						<div className='flex items-center gap-2' key={track.id}>
-							<img src={track.album.images[0].url} height={40} width={40} className='rounded-sm ' />
+							<img src={track.album.images[0].url} height={40} width={40} className='rounded ' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{track.name}</h3>
 						</div>
 					))
@@ -161,7 +161,7 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
 	const topArtists = trpc.topArtists.useQuery({ range, limit: 5 });
 
 	return (
-		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+		<div className='grid cursor-default gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Artists</h2>
@@ -188,11 +188,11 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
 					All time
 				</button>
 			</div>
-			<div className='flex flex-col gap-2'>
+			<div className='grid gap-2'>
 				{topArtists.data ? (
 					topArtists.data.items.map(artist => (
 						<div className='flex items-center gap-2' key={artist.id}>
-							<img src={artist.images[0].url} height={40} width={40} className='aspect-square rounded-sm' />
+							<img src={artist.images[0].url} height={40} width={40} className='aspect-square rounded' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{artist.name}</h3>
 						</div>
 					))
@@ -237,7 +237,7 @@ const TopGenresCard: React.FC<{}> = ({}) => {
 	const topGenres = calculateTopGenres(topArtists.data ?? null);
 
 	return (
-		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+		<div className='grid cursor-default gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Genres</h2>
@@ -264,7 +264,7 @@ const TopGenresCard: React.FC<{}> = ({}) => {
 					All time
 				</button>
 			</div>
-			<div className='flex flex-col gap-2'>
+			<div className='grid gap-2'>
 				{topGenres ? (
 					topGenres.slice(0, 8).map((item, index) => (
 						<h3 className='capitalize' key={item.genre}>
