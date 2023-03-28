@@ -9,7 +9,7 @@
     } */
 
 	body {
-		@apply bg-violet-500 text-white;
+		@apply cursor-default bg-violet-500 text-white;
 	}
 
 	h1,
