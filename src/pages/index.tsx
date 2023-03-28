@@ -1,4 +1,4 @@
-import { faChartLine, faClockRotateLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faClockRotateLeft, faPersonDigging, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { calculateTopGenres } from '@lib/helpers';
 import { trpc } from '@lib/trpc';
@@ -18,7 +18,10 @@ export default function Home() {
 					<TopGenresCard />
 				</div>
 				<div>
-					<h2 className='rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>More stats are coming soon!</h2>
+					<div className='flex items-center gap-2 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+						<FontAwesomeIcon icon={faPersonDigging} height={30} width={30} />
+						<h2>More stats are work in progress!</h2>
+					</div>
 				</div>
 			</div>
 		</div>
