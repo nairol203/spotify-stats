@@ -34,16 +34,13 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 				<meta name='twitter:image' content='https://spotify-stats.nairol.me' />
 				<meta name='twitter:site' content='@nairol203' />
 				<meta name='twitter:creator' content='@nairol203' />
-				<meta name='twitter:ccrard' content='summary' />
+				<meta name='twitter:card' content='summary' />
 			</Head>
-			<div className='h-screen'>
-				<div className='md:overflow-y-auto md:grid md:grid-cols-[15rem_1fr] bg-red-300 dark:bg-red-500/60'>
+			<div className='grid h-screen'>
+				<div className='md:grid md:grid-cols-[15rem_1fr] md:overflow-y-auto'>
 					<NavBar />
-					<main className='overflow-y-auto'>
-						<div className='mx-4'>
-							<Component {...pageProps} />
-							<Footer />
-						</div>
+					<main className='mx-4 overflow-y-auto'>
+						<Component {...pageProps} />
 					</main>
 				</div>
 			</div>

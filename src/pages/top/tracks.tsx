@@ -30,9 +30,9 @@ export default function Home() {
 				</button>
 			</div>
 			<div>
-				<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center gap-4 px-4 py-2 text-gray-400'>
+				<div className='grid grid-cols-[1.25rem_6fr_1fr] items-center gap-4 px-4 py-2 text-gray-200'>
 					<span className='flex justify-center'>#</span>
-					<span>Titel</span>
+					<span>Title</span>
 					<span className='flex justify-end'>
 						<FontAwesomeIcon icon={faClock} height={20} width={20} />
 					</span>
@@ -42,7 +42,7 @@ export default function Home() {
 					{topTracks.data ? (
 						topTracks.data.items.map((track, index) => (
 							<div
-								className='grid grid-cols-[1.25rem_6fr_1fr] items-center justify-between gap-4 rounded-[4px] px-4 py-2 md:hover:bg-black md:hover:bg-opacity-10 dark:md:hover:bg-white dark:md:hover:bg-opacity-10'
+								className='grid grid-cols-[1.25rem_6fr_1fr] items-center justify-between gap-4 rounded-[4px] px-4 py-2 md:hover:bg-white md:hover:bg-opacity-10'
 								key={track.id + index}
 							>
 								<span className='flex w-5 justify-center'>{index + 1}</span>
@@ -55,7 +55,7 @@ export default function Home() {
 										<div className='flex flex-wrap items-center gap-x-1'>
 											{track.explicit && <span className='rounded-sm bg-slate-300 py-[1px] px-[5.5px] text-[10px] text-black'>E</span>}
 											{track.artists.map((artist, index) => (
-												<div className='dark:text-gray-300' key={artist.id + index}>
+												<div className='text-gray-300' key={artist.id + index}>
 													<Link className='text-sm hover:underline' href={`/artist/${artist.id}`} key={artist.id}>
 														{artist.name}
 													</Link>

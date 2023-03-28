@@ -4,9 +4,9 @@ export function calcTime(date: Date) {
 	const seconds = Math.floor(ms / 1000) % 60;
 	const minutes = Math.floor(ms / 60000) % 60;
 
-	if (hours > 0) return `vor ${hours} Stunde${hours === 1 ? '' : 'n'}`;
-	if (minutes > 0) return `vor ${minutes} Minute${minutes === 1 ? '' : 'n'}`;
-	return `vor ${seconds} Sekunde${seconds === 1 ? '' : 'n'}`;
+	if (hours > 0) return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+	if (minutes > 0) return `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
+	return `${seconds} second${seconds === 1 ? '' : 's'} ago`;
 }
 
 export function msToString(ms: number) {

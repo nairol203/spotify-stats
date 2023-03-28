@@ -1,6 +1,6 @@
+import { faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { faChartLine, faClockRotateLeft, faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -8,16 +8,13 @@ export default function NavBar() {
 	const router = useRouter();
 
 	return (
-		<nav className='hidden md:flex flex-col gap-4 overflow-y-auto py-4 px-3 bg-white/25 background-blur-lg rounded-lg ml-4 my-4'>
+		<nav className='background-blur-lg my-4 ml-4 hidden flex-col gap-4 overflow-y-auto rounded-lg bg-white/25 py-4 px-3 shadow-md md:flex'>
 			<Link href='/' className='flex items-center gap-2'>
-				<Image
-					src='/logo.png'
-					alt='Logo von Nairol Price Check'
-					width={30}
-					height={30}
-					className='md:hover:underline md:hover:underline-offset-4 md:hover:brightness-110'
-				/>
-				<h1>Nairol Spotify</h1>
+				{
+					// @ts-expect-error
+					<FontAwesomeIcon icon={faSpotify} height={35} width={35} />
+				}
+				<h1>Spotify Stats</h1>
 			</Link>
 			<div>
 				<Link className={`${router.pathname === '/' ? '' : 'hover:text-gray-500 dark:hover:text-white'} flex items-center gap-4 p-2`} href='/'>
