@@ -9,6 +9,9 @@ export const authOptions: AuthOptions = {
 			authorization: 'https://accounts.spotify.com/authorize?scope=user-read-email user-top-read user-read-recently-played',
 		}),
 	],
+	pages: {
+		signIn: "/login",
+	},
 	callbacks: {
 		jwt: async ({ token, account }) => {
 			if (account) {

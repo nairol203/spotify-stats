@@ -1,5 +1,5 @@
-import Footer from '@components/Footer';
 import NavBar from '@components/NavBar';
+import UserDropdown from '@components/UserDropdown';
 import { trpc } from '@lib/trpc';
 import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
@@ -12,7 +12,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 			<Head>
 				<link rel='icon' href='/logo.png' />
 				<title>Nairol Spotify Stats</title>
-				<meta name='description' content='Nairol Spotify Stats ist ein selbst entwickelter Spotify Client, der ein paar zusätzliche Features wie Top Songs bietet.' />
+				<meta name='description' content='Track your Spotify listening history and discover your top tracks with Nairol Spotify Stats, the ultimate Spotify statistics tool. Gain insights into your music habits and share your favorite artists with friends.' />
 				<meta name='author' content='nairol203' />
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 				<link rel='shortcut icon' href='/logo.png' />
@@ -21,15 +21,15 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 				<meta property='og:image' content='/logo.png' />
 				<meta property='og:type' content='website' />
 				<meta property='og:url' content='https://spotify-stats.nairol.me' />
-				<meta property='og:site_name' content='spotify.nairol.me' />
+				<meta property='og:site_name' content='spotify-stats.nairol.me' />
 				<meta
 					property='og:description'
-					content='Nairol Spotify Stats ist ein selbst entwickelter Spotify Client, der ein paar zusätzliche Features wie Top Songs bietet.'
+					content='Track your Spotify listening history and discover your top tracks with Nairol Spotify Stats, the ultimate Spotify statistics tool. Gain insights into your music habits and share your favorite artists with friends.'
 				/>
 				<meta name='twitter:title' content='Nairol Spotify Stats' />
 				<meta
 					name='twitter:description'
-					content='Nairol Spotify Stats ist ein selbst entwickelter Spotify Client, der ein paar zusätzliche Features wie Top Songs bietet.'
+					content='Track your Spotify listening history and discover your top tracks with Nairol Spotify Stats, the ultimate Spotify statistics tool. Gain insights into your music habits and share your favorite artists with friends.'
 				/>
 				<meta name='twitter:image' content='https://spotify-stats.nairol.me' />
 				<meta name='twitter:site' content='@nairol203' />
@@ -39,8 +39,11 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 			<div className='grid h-screen'>
 				<div className='md:grid md:grid-cols-[15rem_1fr] md:overflow-y-auto'>
 					<NavBar />
-					<main className='mx-4 overflow-y-auto'>
-						<Component {...pageProps} />
+					<main className='relative overflow-y-auto'>
+						<UserDropdown />
+						<div className='mx-4'>
+							<Component {...pageProps} />
+						</div>
 					</main>
 				</div>
 			</div>
