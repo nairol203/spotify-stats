@@ -6,7 +6,7 @@ import { trpc } from '@lib/trpc';
 import Link from 'next/link';
 
 export default function Home() {
-	const recentTracks = trpc.recentlyPlayed.useQuery();
+	const recentTracks = trpc.recentlyPlayed.useQuery({});
 
 	return (
 		<div className='grid gap-4 py-4'>
