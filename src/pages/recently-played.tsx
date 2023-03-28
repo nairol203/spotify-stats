@@ -29,10 +29,14 @@ export default function Home() {
 									<div className='overflow-hidden text-ellipsis'>
 										<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{item.track.name}</h3>
 										<div className='flex flex-wrap items-center gap-1'>
-											{item.track.explicit && <span className='rounded bg-slate-300 py-[1px] px-[5.5px] text-[10px] text-black'>E</span>}
+											{item.track.explicit && (
+												<span className='rounded bg-slate-300 py-[1px] px-[5.5px] text-[10px] text-black' aria-label='Explicit'>
+													E
+												</span>
+											)}
 
 											{item.track.artists.map((artist, index) => (
-												<div className='text-gray-300' key={artist.id + index}>
+												<div key={artist.id + index}>
 													<span className='text-sm'>{artist.name}</span>
 													{index < item.track.artists.length - 1 && ','}
 												</div>
