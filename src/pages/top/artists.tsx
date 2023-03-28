@@ -1,6 +1,5 @@
 import { SkeletonObjectDynamic } from '@components/SkeletonObject';
 import { trpc } from '@lib/trpc';
-import Link from 'next/link';
 import { useState } from 'react';
 import { SPOTIFY_RANGE } from 'src/server/routers/_app';
 import { z } from 'zod';
@@ -39,9 +38,7 @@ export default function Home() {
 								<div className='flex w-5 justify-center'>{index + 1}</div>
 								<div className='flex items-center gap-4 overflow-hidden text-ellipsis whitespace-nowrap'>
 									<img className='rounded-sms aspect-square max-w-none' src={artist.images[0].url} height={50} width={50} alt='Album Cover' />
-									<Link className='overflow-hidden text-ellipsis hover:underline' href={`/artist/${artist.id}`}>
-										<h3 className='overflow-hidden text-ellipsis'>{artist.name}</h3>
-									</Link>
+									<h3 className='overflow-hidden text-ellipsis'>{artist.name}</h3>
 								</div>
 							</div>
 						))
