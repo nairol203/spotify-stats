@@ -12,9 +12,9 @@ export default function Home() {
 		<div className='grid gap-4 py-4'>
 			<h1>Recently Played</h1>
 			<div>
-				<div className='grid grid-cols-[6fr_1fr] items-center gap-4 px-4 py-2 text-gray-400 lg:grid-cols-[7fr_2fr_1fr]'>
-					<span>Titel</span>
-					<span className='hidden lg:block'>Zuletzt gehört am</span>
+				<div className='grid grid-cols-[6fr_1fr] items-center gap-4 px-4 py-2 text-gray-200 lg:grid-cols-[7fr_2fr_1fr]'>
+					<span>Title</span>
+					<span className='hidden lg:block'>Played at</span>
 					<span className='flex justify-end'>
 						<FontAwesomeIcon icon={faClock} height={20} width={20} />
 					</span>
@@ -24,7 +24,7 @@ export default function Home() {
 					{recentTracks.data ? (
 						recentTracks.data.items.map((item, index) => (
 							<div
-								className='grid grid-cols-[6fr_1fr] items-center justify-between gap-2 rounded-[4px] px-4 py-2 md:hover:bg-black md:hover:bg-opacity-10 dark:md:hover:bg-white dark:md:hover:bg-opacity-10 lg:grid-cols-[7fr_2fr_1fr]'
+								className='grid grid-cols-[6fr_1fr] items-center justify-between gap-2 rounded-[4px] px-4 py-2 md:hover:bg-white md:hover:bg-opacity-10 lg:grid-cols-[7fr_2fr_1fr]'
 								key={item.track.id + index}
 							>
 								<div className='flex items-center gap-4 overflow-hidden text-ellipsis whitespace-nowrap'>
@@ -37,7 +37,7 @@ export default function Home() {
 											{item.track.explicit && <span className='rounded-sm bg-slate-300 py-[1px] px-[5.5px] text-[10px] text-black'>E</span>}
 
 											{item.track.artists.map((artist, index) => (
-												<div className='dark:text-gray-300' key={artist.id + index}>
+												<div className='text-gray-300' key={artist.id + index}>
 													<Link className='text-sm hover:underline' href={`/artist/${artist.id}`}>
 														{artist.name}
 													</Link>

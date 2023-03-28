@@ -25,7 +25,7 @@
     } */
 
     body {
-        @apply bg-background text-black accent-secondary dark:bg-dark-background dark:text-white;
+        @apply bg-violet-600 text-white;
     }
 
     h1,
@@ -52,11 +52,5 @@
 @layer components {
     .skeleton {
         @apply invisible relative animate-pulse before:visible before:absolute before:inset-0 before:rounded-md before:bg-white/20;
-    }
-    .primary-button {
-        @apply rounded-md bg-primary py-1.5 px-3 text-sm text-white duration-200 ease-in hover:bg-secondary disabled:cursor-not-allowed disabled:text-opacity-40 disabled:hover:bg-primary;
-    }
-    .secondary-button {
-        @apply rounded-md bg-card py-1.5 px-3 text-sm text-black duration-200 ease-in hover:bg-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-tertiary dark:bg-dark-tertiary dark:text-white dark:hover:bg-dark-hover dark:disabled:hover:bg-dark-tertiary;
     }
 }
