@@ -8,7 +8,7 @@ export default function NavBar() {
 	const router = useRouter();
 
 	return (
-		<nav className='flex flex-col gap-4 overflow-y-auto py-4 px-3 dark:bg-black dark:text-white'>
+		<nav className='hidden md:flex flex-col gap-4 overflow-y-auto py-4 px-3 bg-white/25 background-blur-lg rounded-lg ml-4 my-4'>
 			<Link href='/' className='flex items-center gap-2'>
 				<Image
 					src='/logo.png'
