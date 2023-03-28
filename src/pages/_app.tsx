@@ -1,3 +1,4 @@
+import Footer from '@components/Footer';
 import NavBar from '@components/NavBar';
 import UserDropdown from '@components/UserDropdown';
 import { trpc } from '@lib/trpc';
@@ -45,6 +46,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 							<Component {...pageProps} />
 						</div>
 					</main>
+					<Footer />
 				</div>
 			</div>
 		</SessionProvider>

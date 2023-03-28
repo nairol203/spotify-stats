@@ -12,9 +12,9 @@ export default function UserDropdown() {
 	if (!session || !session?.user.image) return <></>;
 
 	return (
-		<div className='fixed top-4 right-8 hidden gap-2 md:grid'>
-			<div className='relative bg-violet-500'>
-				<button className='flex items-center gap-2 rounded-3xl  bg-white/25 p-0.5' onClick={() => setActive(!active)}>
+		<div className='fixed z-10 top-4 right-8 hidden gap-2 md:grid'>
+			<div className='relative bg-violet-500 rounded-3xl shadow'>
+				<button className='flex items-center gap-2 rounded-3xl bg-white/25 p-0.5' onClick={() => setActive(!active)}>
 					<Image src={session?.user.image} height={30} width={30} alt='User Profile Picture' className='aspect-square rounded-full' />
 					<span>{session.user.name}</span>
 					<FontAwesomeIcon height={20} width={20} icon={active ? faCaretUp : faCaretDown} />
