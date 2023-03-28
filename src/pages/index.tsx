@@ -1,5 +1,6 @@
 import { faChartLine, faClockRotateLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { calculateTopGenres } from '@lib/helpers';
 import { trpc } from '@lib/trpc';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -13,6 +14,7 @@ export default function Home() {
 				<RecentlyPlayedCard />
 				<TopTracksCard />
 				<TopArtistsCard />
+				<TopGenresCard />
 			</div>
 			<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
 				<h2>More stats are coming soon!</h2>
@@ -231,6 +233,79 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
 					</div>
 					<h3>Show more</h3>
 				</Link>
+			</div>
+		</div>
+	);
+};
+
+const TopGenresCard: React.FC<{}> = ({}) => {
+	const [range, setRange] = useState<z.infer<typeof SPOTIFY_RANGE>>('short_term');
+	const topArtists = trpc.topArtists.useQuery({ range, limit: 50 });
+	const topGenres = calculateTopGenres(topArtists.data ?? null);
+
+	return (
+		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
+			<div className='flex items-center gap-2'>
+				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
+				<h2>Your Top Genres</h2>
+			</div>
+			<div className='flex gap-2'>
+				<button
+					onClick={() => setRange('short_term')}
+					className={`${range === 'short_term' ? 'bg-white/90 text-black' : 'hover:bg-white/90 hover:text-black'} rounded-full bg-white/20 p-1 px-2 duration-100 ease-in`}
+				>
+					4 Weeks
+				</button>
+				<button
+					onClick={() => setRange('medium_term')}
+					className={`${
+						range === 'medium_term' ? 'bg-white/90 text-black' : 'hover:bg-white/90 hover:text-black'
+					} rounded-full bg-white/20 p-1 px-2 duration-100 ease-in`}
+				>
+					6 Months
+				</button>
+				<button
+					onClick={() => setRange('long_term')}
+					className={`${range === 'long_term' ? 'bg-white/90 text-black' : 'hover:bg-white/90 hover:text-black'} rounded-full bg-white/20 p-1 px-2 duration-100 ease-in`}
+				>
+					All time
+				</button>
+			</div>
+			<div className='flex flex-col gap-2'>
+				{topGenres ? (
+					topGenres.slice(0, 8).map((item, index) => (
+						<h3 className='capitalize'>
+							{index + 1}. {item.genre}
+						</h3>
+					))
+				) : (
+					<>
+						<div className='flex'>
+							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						</div>
+						<div className='flex'>
+							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						</div>
+						<div className='flex'>
+							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						</div>
+						<div className='flex'>
+							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						</div>
+						<div className='flex'>
+							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						</div>
+						<div className='flex'>
+							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						</div>
+						<div className='flex'>
+							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						</div>
+						<div className='flex'>
+							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						</div>
+					</>
+				)}
 			</div>
 		</div>
 	);
