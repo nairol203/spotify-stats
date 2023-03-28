@@ -10,14 +10,16 @@ import { z } from 'zod';
 export default function Home() {
 	return (
 		<div className='flex min-h-screen flex-col gap-4 py-4'>
-			<div className='grid flex-wrap gap-4 md:flex'>
+			<div className='grid gap-4 xl:grid-cols-2 2xl:grid-cols-[28rem_28rem_28rem]'>
 				<RecentlyPlayedCard />
 				<TopTracksCard />
 				<TopArtistsCard />
-				<TopGenresCard />
-			</div>
-			<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
-				<h2>More stats are coming soon!</h2>
+				<div className='2xl:col-span-2'>
+					<TopGenresCard />
+				</div>
+				<div>
+					<h2 className='rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>More stats are coming soon!</h2>
+				</div>
 			</div>
 		</div>
 	);
@@ -27,7 +29,7 @@ const RecentlyPlayedCard: React.FC<{}> = ({}) => {
 	const recentTracks = trpc.recentlyPlayed.useQuery({ limit: 6 });
 
 	return (
-		<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
+		<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faClockRotateLeft} height={20} width={20} />
 				<h2>Recently Played</h2>
@@ -84,7 +86,7 @@ const TopTracksCard: React.FC<{}> = ({}) => {
 	const topTracks = trpc.topTracks.useQuery({ range, limit: 5 });
 
 	return (
-		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
+		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Tracks</h2>
@@ -159,7 +161,7 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
 	const topArtists = trpc.topArtists.useQuery({ range, limit: 5 });
 
 	return (
-		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
+		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Artists</h2>
@@ -235,7 +237,7 @@ const TopGenresCard: React.FC<{}> = ({}) => {
 	const topGenres = calculateTopGenres(topArtists.data ?? null);
 
 	return (
-		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg md:w-96'>
+		<div className='flex cursor-default flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Genres</h2>
