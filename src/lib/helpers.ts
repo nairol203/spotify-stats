@@ -15,3 +15,18 @@ export function msToString(ms: number) {
 
 	return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
+
+export function calculateTopGenres (topArtists: SpotifyApi.UsersTopArtistsResponse | null) {
+	if (!topArtists) return null;
+
+	const allGenres = topArtists.items.reduce<string[]>((acc, artist) => [...acc, ...artist.genres], []);
+	const genreCounts = allGenres.reduce<{ [genre: string]: number }>((acc, genre) => {
+		!acc[genre] ? (acc[genre] = 1) : acc[genre]++;
+		return acc;
+	}, {});
+	const topGenres = Object.entries(genreCounts)
+		.map(([genre, count]) => ({ genre, count }))
+		.sort((a, b) => b.count - a.count);
+
+	return topGenres;
+};
