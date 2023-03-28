@@ -116,7 +116,7 @@ const TopTracksCard: React.FC<{}> = ({}) => {
 			<div className='grid gap-2'>
 				{topTracks.data ? (
 					topTracks.data.items.map(track => (
-						<div className='flex items-center gap-2' key={track.id}>
+						<div className='flex items-center gap-2 overflow-hidden text-ellipsis' key={track.id}>
 							<img src={track.album.images[0].url} height={40} width={40} className='rounded ' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{track.name}</h3>
 						</div>
@@ -191,7 +191,7 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
 			<div className='grid gap-2'>
 				{topArtists.data ? (
 					topArtists.data.items.map(artist => (
-						<div className='flex items-center gap-2' key={artist.id}>
+						<div className='flex items-center gap-2 overflow-hidden text-ellipsis' key={artist.id}>
 							<img src={artist.images[0].url} height={40} width={40} className='aspect-square rounded' />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{artist.name}</h3>
 						</div>
@@ -264,38 +264,38 @@ const TopGenresCard: React.FC<{}> = ({}) => {
 					All time
 				</button>
 			</div>
-			<div className='grid gap-2'>
+			<div className='grid gap-2 overflow-hidden text-ellipsis'>
 				{topGenres ? (
 					topGenres.slice(0, 8).map((item, index) => (
-						<h3 className='capitalize' key={item.genre}>
+						<h3 className='overflow-hidden text-ellipsis whitespace-nowrap capitalize' key={item.genre}>
 							{index + 1}. {item.genre}
 						</h3>
 					))
 				) : (
 					<>
-						<div className='flex'>
-							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						<div className='flex overflow-hidden text-ellipsis'>
+							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor sit amet consectetur.</h3>
 						</div>
-						<div className='flex'>
-							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						<div className='flex overflow-hidden text-ellipsis'>
+							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor sit amet.</h3>
 						</div>
-						<div className='flex'>
-							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						<div className='flex overflow-hidden text-ellipsis'>
+							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem, ipsum dolor.</h3>
 						</div>
-						<div className='flex'>
-							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						<div className='flex overflow-hidden text-ellipsis'>
+							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor.</h3>
 						</div>
-						<div className='flex'>
-							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						<div className='flex overflow-hidden text-ellipsis'>
+							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor sit amet.</h3>
 						</div>
-						<div className='flex'>
-							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						<div className='flex overflow-hidden text-ellipsis'>
+							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor sit amet consectetur.</h3>
 						</div>
-						<div className='flex'>
-							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						<div className='flex overflow-hidden text-ellipsis'>
+							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor.</h3>
 						</div>
-						<div className='flex'>
-							<h3 className='skeleton'>Lorem ipsum dolor sit amet.</h3>
+						<div className='flex overflow-hidden text-ellipsis'>
+							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor sit amet.</h3>
 						</div>
 					</>
 				)}
