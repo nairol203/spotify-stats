@@ -14,7 +14,7 @@ export default function UserDropdown() {
 	return (
 		<div className='fixed top-4 right-8 z-10 hidden gap-2 md:grid'>
 			<div className='relative rounded-3xl bg-violet-500 shadow'>
-				<button className='flex items-center gap-2 rounded-3xl bg-white/25 p-0.5' onClick={() => setActive(!active)}>
+				<button className='flex items-center gap-2 rounded-3xl bg-white/25 p-0.5 pr-1.5' onClick={() => setActive(!active)}>
 					<Image src={session?.user.image} height={30} width={30} alt='User Profile Picture' className='aspect-square rounded-full' />
 					<span>{session.user.name}</span>
 					<FontAwesomeIcon height={20} width={20} icon={active ? faCaretUp : faCaretDown} />
