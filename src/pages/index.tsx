@@ -38,7 +38,7 @@ const RecentlyPlayedCard: React.FC<{}> = ({}) => {
 							key={item.track.id}
 						>
 							<img src={item.track.album.images[0].url} height={40} width={40} className='rounded-sm' />
-							<h3>{item.track.name}</h3>
+							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{item.track.name}</h3>
 						</div>
 					))
 				) : (
@@ -120,7 +120,7 @@ const TopTracksCard: React.FC<{}> = ({}) => {
 							key={track.id}
 						>
 							<img src={track.album.images[0].url} height={40} width={40} className='rounded-sm ' />
-							<h3>{track.name}</h3>
+							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{track.name}</h3>
 						</div>
 					))
 				) : (
@@ -198,7 +198,7 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
 							key={artist.id}
 						>
 							<img src={artist.images[0].url} height={40} width={40} className='aspect-square rounded-sm' />
-							<h3>{artist.name}</h3>
+							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{artist.name}</h3>
 						</div>
 					))
 				) : (
