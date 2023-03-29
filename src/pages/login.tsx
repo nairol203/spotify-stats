@@ -9,7 +9,7 @@ export default function Login() {
 	return (
 		<div className='mt-10 flex flex-col items-center gap-3 py-4'>
 			<h1>Log in to your Spotify Stats</h1>
-			<span className='max-w-sm'>Discover your top tracks and gain insights into your Spotify listening habits with Nairol Spotify Stats.</span>
+			<span className='max-w-sm text-center'>Discover your top tracks and gain insights into your Spotify listening habits with Nairol Spotify Stats.</span>
 			<button className='flex items-center gap-2 rounded-md bg-white/25 p-2 duration-100 ease-in hover:bg-white/30' onClick={() => signIn('spotify')}>
 				{
 					// @ts-expect-error
