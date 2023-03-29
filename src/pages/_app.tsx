@@ -42,7 +42,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 					<NavBar />
 					<main className='relative overflow-y-auto'>
 						<UserDropdown />
-						<div className='mx-4'>
+						<div className='m-4'>
 							<Component {...pageProps} />
 						</div>
 					</main>

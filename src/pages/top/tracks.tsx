@@ -13,7 +13,7 @@ export default function Home() {
 	const topTracks = trpc.topTracks.useQuery({ range });
 
 	return (
-		<div className='my-4 grid gap-4 rounded-xl bg-white/25 p-6 py-4 shadow-md backdrop-blur-lg'>
+		<div className='grid gap-4 rounded-xl bg-white/25 p-6 py-4 shadow-md backdrop-blur-lg'>
 			<h1>Top Tracks</h1>
 			<div className='flex justify-center gap-10 sm:justify-start sm:gap-6'>
 				<button className={`${range === 'short_term' ? 'underline' : 'opacity-80'} decoration-1 underline-offset-8 hover:underline`} onClick={() => setRange('short_term')}>

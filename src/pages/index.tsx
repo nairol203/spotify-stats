@@ -10,7 +10,7 @@ import { z } from 'zod';
 
 export default function Home() {
 	return (
-		<div className='flex min-h-screen flex-col gap-4 py-4'>
+		<div className='flex min-h-screen flex-col gap-4'>
 			<div className='grid gap-4 xl:grid-cols-2 2xl:grid-cols-[28rem_28rem_28rem]'>
 				<RecentlyPlayedCard />
 				<TopTracksCard />
