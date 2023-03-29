@@ -37,9 +37,20 @@ export default function NavBar() {
 					<span>Top Tracks</span>
 				</Link>
 			</div>
-			<a href='https://nairol.me' target='_blank' rel='noreferrer' className='mt-auto hidden justify-center  text-sm hover:underline md:flex'>
-				© 2023 nairol203
-			</a>
+			<div className='mt-auto hidden justify-center md:grid'>
+				<a href='https://nairol.me' target='_blank' rel='noreferrer' className='text-sm hover:underline '>
+					© 2023 nairol203
+				</a>
+				<div className='flex gap-1'>
+					<Link className='hover:underline' href='/imprint'>
+						Imprint
+					</Link>
+					<span>•</span>
+					<Link className='hover:underline' href='/privacy'>
+						Privacy
+					</Link>
+				</div>
+			</div>
 		</nav>
 	);
 }
