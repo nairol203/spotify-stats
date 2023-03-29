@@ -9,7 +9,7 @@ export default function Home() {
 	const recentTracks = trpc.recentlyPlayed.useQuery({});
 
 	return (
-		<div className='my-4 grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<h1>Recently Played</h1>
 			<div>
 				<div className='grid grid-cols-[6fr_1fr] items-center gap-4 py-2 lg:grid-cols-[7fr_2fr_1fr]'>
