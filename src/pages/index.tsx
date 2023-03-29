@@ -20,7 +20,7 @@ export default function Home() {
 				</div>
 				<div>
 					<div className='flex items-center gap-2 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
-						<FontAwesomeIcon icon={faPersonDigging} height={30} width={30} />
+						<FontAwesomeIcon icon={faPersonDigging} height={20} width={20} />
 						<h2>More stats are work in progress!</h2>
 					</div>
 				</div>
