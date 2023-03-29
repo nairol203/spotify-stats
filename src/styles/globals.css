@@ -9,7 +9,7 @@
     } */
 
 	body {
-		@apply cursor-default bg-gradient-to-tr from-violet-700 to-violet-500 text-white;
+		@apply cursor-default bg-gradient-to-tr from-purple-700 to-violet-500 text-white;
 	}
 
 	h1,
