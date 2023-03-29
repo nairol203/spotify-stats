@@ -37,7 +37,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 				<meta name='twitter:creator' content='@nairol203' />
 				<meta name='twitter:card' content='summary' />
 			</Head>
-			<div className='grid h-screen'>
+			<div className='grid md:h-screen'>
 				<div className='md:grid md:grid-cols-[15rem_1fr] md:overflow-y-auto'>
 					<NavBar />
 					<main className='relative overflow-y-auto'>
