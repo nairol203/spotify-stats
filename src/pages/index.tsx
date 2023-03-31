@@ -10,19 +10,17 @@ import { z } from 'zod';
 
 export default function Home() {
 	return (
-		<div className='flex min-h-screen flex-col gap-4'>
-			<div className='grid gap-4 xl:grid-cols-2 2xl:grid-cols-[28rem_28rem_28rem]'>
-				<RecentlyPlayedCard />
-				<TopTracksCard />
-				<TopArtistsCard />
-				<div className='2xl:col-span-2'>
-					<TopGenresCard />
-				</div>
-				<div>
-					<div className='flex items-center gap-2 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
-						<FontAwesomeIcon icon={faPersonDigging} height={20} width={20} />
-						<h2>More stats are work in progress!</h2>
-					</div>
+		<div className='grid gap-4 xl:grid-cols-2 2xl:grid-cols-[28rem_28rem_28rem]'>
+			<RecentlyPlayedCard />
+			<TopTracksCard />
+			<TopArtistsCard />
+			<div className='2xl:col-span-2'>
+				<TopGenresCard />
+			</div>
+			<div>
+				<div className='flex items-center gap-2 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+					<FontAwesomeIcon icon={faPersonDigging} height={20} width={20} />
+					<h2>More stats are work in progress!</h2>
 				</div>
 			</div>
 		</div>
