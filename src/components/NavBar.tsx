@@ -14,10 +14,11 @@ export default function NavBar() {
 					// @ts-expect-error
 					<FontAwesomeIcon icon={faSpotify} height={50} width={50} />
 				}
-				<h1 className='grid'>
+				<h1 className='hidden md:grid'>
 					Nairol
 					<span className='text-lg'>Spotify Stats</span>
 				</h1>
+				<h1 className='md:hidden'>Nairol Spotify Stats</h1>
 			</Link>
 			<div className='hidden md:block'>
 				<Link className={`${router.pathname === '/' ? 'bg-white/25' : 'hover:bg-white/25'} flex items-center gap-4 rounded p-2`} href='/'>

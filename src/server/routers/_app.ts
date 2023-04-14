@@ -67,6 +67,10 @@ export const appRouter = router({
 			},
 		});
 
+		if (res.status === 204) {
+			return null;
+		}
+
 		return (await res.json()) as SpotifyApi.CurrentlyPlayingResponse;
 	}),
 });
