@@ -1,4 +1,4 @@
-import { faChartLine, faClockRotateLeft, faCompactDisc, faPause, faPersonDigging, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faClockRotateLeft, faCompactDisc, faPersonDigging, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { calculateTopGenres, msToString } from '@lib/helpers';
 import { trpc } from '@lib/trpc';
