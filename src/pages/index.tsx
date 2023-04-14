@@ -28,7 +28,7 @@ export default function Home() {
 	);
 }
 
-const RecentlyPlayedCard: React.FC<{}> = ({}) => {
+const RecentlyPlayedCard = () => {
 	const recentTracks = trpc.recentlyPlayed.useQuery({ limit: 6 });
 
 	return (
@@ -84,7 +84,7 @@ const RecentlyPlayedCard: React.FC<{}> = ({}) => {
 	);
 };
 
-const TopTracksCard: React.FC<{}> = ({}) => {
+const TopTracksCard = () => {
 	const [range, setRange] = useState<z.infer<typeof SPOTIFY_RANGE>>('short_term');
 	const topTracks = trpc.topTracks.useQuery({ range, limit: 5 });
 
@@ -159,7 +159,7 @@ const TopTracksCard: React.FC<{}> = ({}) => {
 	);
 };
 
-const TopArtistsCard: React.FC<{}> = ({}) => {
+const TopArtistsCard = () => {
 	const [range, setRange] = useState<z.infer<typeof SPOTIFY_RANGE>>('short_term');
 	const topArtists = trpc.topArtists.useQuery({ range, limit: 5 });
 
@@ -234,7 +234,7 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
 	);
 };
 
-const TopGenresCard: React.FC<{}> = ({}) => {
+const TopGenresCard = () => {
 	const [range, setRange] = useState<z.infer<typeof SPOTIFY_RANGE>>('short_term');
 	const topArtists = trpc.topArtists.useQuery({ range, limit: 50 });
 	const topGenres = calculateTopGenres(topArtists.data ?? null);
@@ -307,10 +307,10 @@ const TopGenresCard: React.FC<{}> = ({}) => {
 	);
 };
 
-const NowPlayingCard: React.FC<{}> = ({}) => {
+const NowPlayingCard = () => {
 	const currentlyPlaying = trpc.currentlyPlaying.useQuery(undefined, { refetchInterval: 1000 });
 
-	if (!currentlyPlaying.data || !['track', 'episode'].includes(currentlyPlaying.data.currently_playing_type)) {
+	if (!currentlyPlaying.data?.item || currentlyPlaying.data.currently_playing_type !== 'track') {
 		return <></>;
 	}
 
@@ -324,11 +324,7 @@ const NowPlayingCard: React.FC<{}> = ({}) => {
 				<div className='flex items-center gap-2'>
 					<Image
 						className='aspect-square rounded'
-						src={
-							currentlyPlaying.data.currently_playing_type === 'track'
-								? (currentlyPlaying.data.item as SpotifyApi.TrackObjectFull).album.images[0].url
-								: (currentlyPlaying.data.item as SpotifyApi.EpisodeObjectFull).images[0].url
-						}
+						src={(currentlyPlaying.data.item as SpotifyApi.TrackObjectFull).album.images[0].url}
 						width={40}
 						height={40}
 						alt='Album Cover'
@@ -337,7 +333,7 @@ const NowPlayingCard: React.FC<{}> = ({}) => {
 				</div>
 				<div className='flex w-full items-center gap-4'>
 					<span className='text-xs'>{msToString(currentlyPlaying.data.progress_ms ?? 0)}</span>
-					<div className='h-1 w-full rounded-full bg-white/25'>
+					<div className='h-1 w-full overflow-hidden rounded-full bg-white/25'>
 						<div
 							className='h-1 rounded-full bg-white'
 							style={{ width: `${((currentlyPlaying.data.progress_ms ?? 0) / (currentlyPlaying.data.item?.duration_ms ?? 0)) * 100}%` }}
