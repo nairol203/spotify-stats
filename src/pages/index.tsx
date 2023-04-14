@@ -4,7 +4,7 @@ import { calculateTopGenres, msToString } from '@lib/helpers';
 import { trpc } from '@lib/trpc';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SPOTIFY_RANGE } from 'src/server/routers/_app';
 import { z } from 'zod';
 
@@ -17,9 +17,7 @@ export default function Home() {
 			<div className='2xl:col-span-2'>
 				<TopGenresCard />
 			</div>
-			<div>
-				<NowPlayingCard />
-			</div>
+			<NowPlayingCard />
 			{/* <div className='flex flex-col gap-2'>
 				<div className='flex items-center gap-2 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 					<FontAwesomeIcon icon={faPersonDigging} height={20} width={20} />
@@ -34,48 +32,48 @@ const RecentlyPlayedCard = () => {
 	const recentTracks = trpc.recentlyPlayed.useQuery({ limit: 6 });
 
 	return (
-		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
-			<div className='flex items-center gap-2'>
+		<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-5 shadow-md backdrop-blur-lg'>
+			<div className='flex items-center gap-2 p-1'>
 				<FontAwesomeIcon icon={faClockRotateLeft} height={20} width={20} />
 				<h2>Recently Played</h2>
 			</div>
-			<div className='grid gap-2'>
+			<div>
 				{recentTracks.data ? (
-					recentTracks.data.items.map(item => (
-						<div className='flex items-center gap-2 overflow-hidden text-ellipsis' key={item.track.id}>
-							<Image src={item.track.album.images[0].url} height={40} width={40} className='rounded' alt='Album Cover' />
+					recentTracks.data.items.map((item, index) => (
+						<div className='flex items-center gap-2 overflow-hidden text-ellipsis p-1' key={`${item.track.id}-${index}-recent-tracks`}>
+							<Image src={item.track.album.images[0].url} height={40} width={40} className='rounded' alt={`Album Cover from ${item.track.name}`} />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{item.track.name}</h3>
 						</div>
 					))
 				) : (
 					<>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
 					</>
 				)}
-				<Link href='/recently-played' className='flex items-center gap-2'>
+				<Link href='/recently-played' className='flex items-center gap-2 rounded p-1 duration-200 md:hover:bg-white/25'>
 					<div className='flex h-10 w-10 items-center justify-center'>
 						<FontAwesomeIcon icon={faPlus} height={30} width={30} />
 					</div>
@@ -91,8 +89,8 @@ const TopTracksCard = () => {
 	const topTracks = trpc.topTracks.useQuery({ range, limit: 5 });
 
 	return (
-		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
-			<div className='flex items-center gap-2'>
+		<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-5 shadow-md backdrop-blur-lg'>
+			<div className='flex items-center gap-2 p-1'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Tracks</h2>
 			</div>
@@ -118,39 +116,39 @@ const TopTracksCard = () => {
 					All time
 				</button>
 			</div>
-			<div className='grid gap-2'>
+			<div>
 				{topTracks.data ? (
-					topTracks.data.items.map(track => (
-						<div className='flex items-center gap-2 overflow-hidden text-ellipsis' key={track.id}>
-							<Image src={track.album.images[0].url} height={40} width={40} className='rounded' alt='Album Cover' />
+					topTracks.data.items.map((track, index) => (
+						<div className='flex items-center gap-2 overflow-hidden text-ellipsis p-1' key={`${track.id}-${index}-top-tracks`}>
+							<Image src={track.album.images[0].url} height={40} width={40} className='rounded' alt={`Album Cover from ${track.name}`} />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{track.name}</h3>
 						</div>
 					))
 				) : (
 					<>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
 					</>
 				)}
-				<Link href='/top/tracks' className='flex items-center gap-2'>
+				<Link href='/top/tracks' className='flex items-center gap-2 rounded p-1 duration-200 md:hover:bg-white/25'>
 					<div className='flex h-10 w-10 items-center justify-center'>
 						<FontAwesomeIcon icon={faPlus} height={30} width={30} />
 					</div>
@@ -166,8 +164,8 @@ const TopArtistsCard = () => {
 	const topArtists = trpc.topArtists.useQuery({ range, limit: 5 });
 
 	return (
-		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
-			<div className='flex items-center gap-2'>
+		<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-5 shadow-md backdrop-blur-lg'>
+			<div className='flex items-center gap-2 p-1'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Artists</h2>
 			</div>
@@ -193,39 +191,39 @@ const TopArtistsCard = () => {
 					All time
 				</button>
 			</div>
-			<div className='grid gap-2'>
+			<div>
 				{topArtists.data ? (
-					topArtists.data.items.map(artist => (
-						<div className='flex items-center gap-2 overflow-hidden text-ellipsis' key={artist.id}>
-							<Image src={artist.images[0].url} height={40} width={40} className='aspect-square rounded' alt='Artist Profile Picture' />
+					topArtists.data.items.map((artist, index) => (
+						<div className='flex items-center gap-2 overflow-hidden text-ellipsis p-1' key={`${artist.id}-${index}-top-artists`}>
+							<Image src={artist.images[0].url} height={40} width={40} className='aspect-square rounded' alt={`Artist Profile Picture from ${artist.name}`} />
 							<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{artist.name}</h3>
 						</div>
 					))
 				) : (
 					<>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 p-1'>
 							<div className='skeleton h-10 w-10' />
 							<h2 className='skeleton'>Lorem, ipsum.</h2>
 						</div>
 					</>
 				)}
-				<Link href='/top/artists' className='flex items-center gap-2'>
+				<Link href='/top/artists' className='flex items-center gap-2 rounded p-1 duration-200 md:hover:bg-white/25'>
 					<div className='flex h-10 w-10 items-center justify-center'>
 						<FontAwesomeIcon icon={faPlus} height={30} width={30} />
 					</div>
@@ -242,8 +240,8 @@ const TopGenresCard = () => {
 	const topGenres = calculateTopGenres(topArtists.data ?? null);
 
 	return (
-		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
-			<div className='flex items-center gap-2'>
+		<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-5 shadow-md backdrop-blur-lg'>
+			<div className='flex items-center gap-2 p-1'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Genres</h2>
 			</div>
@@ -269,37 +267,37 @@ const TopGenresCard = () => {
 					All time
 				</button>
 			</div>
-			<div className='grid gap-2 overflow-hidden text-ellipsis'>
+			<div className='overflow-hidden text-ellipsis'>
 				{topGenres ? (
 					topGenres.slice(0, 8).map((item, index) => (
-						<h3 className='overflow-hidden text-ellipsis whitespace-nowrap capitalize' key={item.genre}>
+						<h3 className='overflow-hidden text-ellipsis whitespace-nowrap p-1 capitalize' key={item.genre}>
 							{index + 1}. {item.genre}
 						</h3>
 					))
 				) : (
 					<>
-						<div className='flex overflow-hidden text-ellipsis'>
+						<div className='flex overflow-hidden text-ellipsis p-1'>
 							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor sit amet consectetur.</h3>
 						</div>
-						<div className='flex overflow-hidden text-ellipsis'>
+						<div className='flex overflow-hidden text-ellipsis p-1'>
 							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor sit amet.</h3>
 						</div>
-						<div className='flex overflow-hidden text-ellipsis'>
+						<div className='flex overflow-hidden text-ellipsis p-1'>
 							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem, ipsum dolor.</h3>
 						</div>
-						<div className='flex overflow-hidden text-ellipsis'>
+						<div className='flex overflow-hidden text-ellipsis p-1'>
 							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor.</h3>
 						</div>
-						<div className='flex overflow-hidden text-ellipsis'>
+						<div className='flex overflow-hidden text-ellipsis p-1'>
 							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor sit amet.</h3>
 						</div>
-						<div className='flex overflow-hidden text-ellipsis'>
+						<div className='flex overflow-hidden text-ellipsis p-1'>
 							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor sit amet consectetur.</h3>
 						</div>
-						<div className='flex overflow-hidden text-ellipsis'>
+						<div className='flex overflow-hidden text-ellipsis p-1'>
 							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor.</h3>
 						</div>
-						<div className='flex overflow-hidden text-ellipsis'>
+						<div className='flex overflow-hidden text-ellipsis p-1'>
 							<h3 className='skeleton overflow-hidden text-ellipsis whitespace-nowrap'>Lorem ipsum dolor sit amet.</h3>
 						</div>
 					</>
@@ -317,31 +315,33 @@ const NowPlayingCard = () => {
 	}
 
 	return (
-		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
-			<div className='flex items-center gap-2'>
-				<FontAwesomeIcon icon={faCompactDisc} height={20} width={20} className='animate-spin' />
-				<h2>Currently Playing</h2>
-			</div>
-			<div className='grid w-full gap-2'>
+		<div>
+			<div className='flex flex-col gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 				<div className='flex items-center gap-2'>
-					<Image
-						className='aspect-square rounded'
-						src={(currentlyPlaying.data.item as SpotifyApi.TrackObjectFull).album.images[0].url}
-						width={40}
-						height={40}
-						alt='Album Cover'
-					/>
-					<h3>{currentlyPlaying.data.item?.name}</h3>
+					<FontAwesomeIcon icon={faCompactDisc} height={20} width={20} className={currentlyPlaying.data.is_playing ? 'animate-spin' : ''} />
+					<h2>Currently Playing</h2>
 				</div>
-				<div className='flex w-full items-center gap-4'>
-					<span className='text-xs'>{msToString(currentlyPlaying.data.progress_ms ?? 0)}</span>
-					<div className='h-1 w-full overflow-hidden rounded-full bg-white/25'>
-						<div
-							className='h-1 rounded-full bg-white'
-							style={{ width: `${((currentlyPlaying.data.progress_ms ?? 0) / (currentlyPlaying.data.item?.duration_ms ?? 0)) * 100}%` }}
+				<div className='grid w-full gap-2'>
+					<div className='flex items-center gap-2'>
+						<Image
+							className='aspect-square rounded'
+							src={(currentlyPlaying.data.item as SpotifyApi.TrackObjectFull).album.images[0].url}
+							width={40}
+							height={40}
+							alt={`Album Cover from ${currentlyPlaying.data.item.name}`}
 						/>
+						<h3>{currentlyPlaying.data.item?.name}</h3>
 					</div>
-					<span className='text-xs'>{msToString(currentlyPlaying.data.item?.duration_ms ?? 0)}</span>
+					<div className='flex w-full items-center gap-4'>
+						<span className='text-xs'>{msToString(currentlyPlaying.data.progress_ms ?? 0)}</span>
+						<div className='h-1 w-full overflow-hidden rounded-full bg-white/25'>
+							<div
+								className='h-1 rounded-full bg-white'
+								style={{ width: `${((currentlyPlaying.data.progress_ms ?? 0) / (currentlyPlaying.data.item?.duration_ms ?? 0)) * 100}%` }}
+							/>
+						</div>
+						<span className='text-xs'>{msToString(currentlyPlaying.data.item?.duration_ms ?? 0)}</span>
+					</div>
 				</div>
 			</div>
 		</div>

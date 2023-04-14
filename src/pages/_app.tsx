@@ -40,17 +40,15 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 				<meta name='twitter:creator' content='@nairol203' />
 				<meta name='twitter:card' content='summary' />
 			</Head>
-			<div className='grid md:h-screen'>
-				<div className='md:grid md:grid-cols-[15rem_1fr] md:overflow-y-auto'>
-					<NavBar />
-					<main className='relative overflow-y-auto'>
-						<UserDropdown />
-						<div className='m-4'>
-							<Component {...pageProps} />
-						</div>
-					</main>
-					<Footer />
-				</div>
+			<div className='grid min-h-[100svh] grid-rows-[auto_1fr_auto] md:h-screen md:grid-cols-[15rem_1fr] md:grid-rows-1 md:overflow-y-auto'>
+				<NavBar />
+				<main className='relative overflow-y-auto'>
+					<UserDropdown />
+					<div className='m-4'>
+						<Component {...pageProps} />
+					</div>
+				</main>
+				<Footer />
 			</div>
 		</SessionProvider>
 	);
