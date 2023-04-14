@@ -42,13 +42,24 @@ export const appRouter = router({
 			return (await res.json()) as SpotifyApi.UsersTopArtistsResponse;
 		}),
 	recentlyPlayed: procedure
-	.input(
-		z.object({
-			limit: z.optional(z.number()),
-		})
-	)
-	.query(async ({ ctx, input }) => {
-		const res = await fetch(`${API_ENDPOINT}/me/player/recently-played?limit=${input.limit || 50}`, {
+		.input(
+			z.object({
+				limit: z.optional(z.number()),
+			})
+		)
+		.query(async ({ ctx, input }) => {
+			const res = await fetch(`${API_ENDPOINT}/me/player/recently-played?limit=${input.limit || 50}`, {
+				method: 'GET',
+				headers: {
+					Authorization: `Bearer ${ctx.session?.user?.access_token}`,
+					'Content-Type': 'application/json',
+				},
+			});
+
+			return (await res.json()) as SpotifyApi.UsersRecentlyPlayedTracksResponse;
+		}),
+	currentlyPlaying: procedure.query(async ({ ctx }) => {
+		const res = await fetch(`${API_ENDPOINT}/me/player/currently-playing`, {
 			method: 'GET',
 			headers: {
 				Authorization: `Bearer ${ctx.session?.user?.access_token}`,
@@ -56,7 +67,7 @@ export const appRouter = router({
 			},
 		});
 
-		return (await res.json()) as SpotifyApi.UsersRecentlyPlayedTracksResponse;
+		return (await res.json()) as SpotifyApi.CurrentlyPlayingResponse;
 	}),
 });
 

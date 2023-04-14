@@ -13,7 +13,10 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 			<Head>
 				<link rel='icon' href='/logo.png' />
 				<title>Nairol Spotify Stats</title>
-				<meta name='description' content='Track your Spotify listening history and discover your top tracks with Nairol Spotify Stats, the ultimate Spotify statistics tool. Gain insights into your music habits and share your favorite artists with friends.' />
+				<meta
+					name='description'
+					content='Track your Spotify listening history and discover your top tracks with Nairol Spotify Stats, the ultimate Spotify statistics tool. Gain insights into your music habits and share your favorite artists with friends.'
+				/>
 				<meta name='author' content='nairol203' />
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 				<link rel='shortcut icon' href='/logo.png' />

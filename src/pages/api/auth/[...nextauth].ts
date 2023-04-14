@@ -1,16 +1,29 @@
-import NextAuth, { AuthOptions } from 'next-auth';
+import NextAuth, { AuthOptions, DefaultSession } from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
+
+declare module 'next-auth' {
+	/**
+	 * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+	 */
+	interface Session extends DefaultSession {
+		user: {
+			id: string;
+			access_token: string;
+			refresh_token: string;
+		} & DefaultSession['user'];
+	}
+}
 
 export const authOptions: AuthOptions = {
 	providers: [
 		SpotifyProvider({
 			clientId: process.env.SPOTIFY_CLIENT_ID as string,
 			clientSecret: process.env.SPOTIFY_CLIENT_SECRET as string,
-			authorization: 'https://accounts.spotify.com/authorize?scope=user-read-email user-top-read user-read-recently-played',
+			authorization: 'https://accounts.spotify.com/authorize?scope=user-read-email user-top-read user-read-recently-played user-read-currently-playing',
 		}),
 	],
 	pages: {
-		signIn: "/login",
+		signIn: '/login',
 	},
 	callbacks: {
 		jwt: async ({ token, account }) => {

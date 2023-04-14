@@ -1,6 +1,6 @@
-import { faChartLine, faClockRotateLeft, faPersonDigging, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faClockRotateLeft, faCompactDisc, faPause, faPersonDigging, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { calculateTopGenres } from '@lib/helpers';
+import { calculateTopGenres, msToString } from '@lib/helpers';
 import { trpc } from '@lib/trpc';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,7 +17,8 @@ export default function Home() {
 			<div className='2xl:col-span-2'>
 				<TopGenresCard />
 			</div>
-			<div>
+			<div className='flex flex-col gap-2'>
+				<NowPlayingCard />
 				<div className='flex items-center gap-2 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 					<FontAwesomeIcon icon={faPersonDigging} height={20} width={20} />
 					<h2>More stats are work in progress!</h2>
@@ -88,7 +89,7 @@ const TopTracksCard: React.FC<{}> = ({}) => {
 	const topTracks = trpc.topTracks.useQuery({ range, limit: 5 });
 
 	return (
-		<div className='grid cursor-default gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Tracks</h2>
@@ -163,7 +164,7 @@ const TopArtistsCard: React.FC<{}> = ({}) => {
 	const topArtists = trpc.topArtists.useQuery({ range, limit: 5 });
 
 	return (
-		<div className='grid cursor-default gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Artists</h2>
@@ -239,7 +240,7 @@ const TopGenresCard: React.FC<{}> = ({}) => {
 	const topGenres = calculateTopGenres(topArtists.data ?? null);
 
 	return (
-		<div className='grid cursor-default gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 			<div className='flex items-center gap-2'>
 				<FontAwesomeIcon icon={faChartLine} height={20} width={20} />
 				<h2>Your Top Genres</h2>
@@ -301,6 +302,49 @@ const TopGenresCard: React.FC<{}> = ({}) => {
 						</div>
 					</>
 				)}
+			</div>
+		</div>
+	);
+};
+
+const NowPlayingCard: React.FC<{}> = ({}) => {
+	const currentlyPlaying = trpc.currentlyPlaying.useQuery(undefined, { refetchInterval: 1000 });
+
+	if (!currentlyPlaying.data || !['track', 'episode'].includes(currentlyPlaying.data.currently_playing_type)) {
+		return <></>;
+	}
+
+	return (
+		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
+			<div className='flex items-center gap-2'>
+				<FontAwesomeIcon icon={faCompactDisc} height={20} width={20} className='animate-spin' />
+				<h2>Currently Playing</h2>
+			</div>
+			<div className='grid w-full gap-2'>
+				<div className='flex items-center gap-2'>
+					<Image
+						className='aspect-square rounded'
+						src={
+							currentlyPlaying.data.currently_playing_type === 'track'
+								? (currentlyPlaying.data.item as SpotifyApi.TrackObjectFull).album.images[0].url
+								: (currentlyPlaying.data.item as SpotifyApi.EpisodeObjectFull).images[0].url
+						}
+						width={40}
+						height={40}
+						alt='Album Cover'
+					/>
+					<h3>{currentlyPlaying.data.item?.name}</h3>
+				</div>
+				<div className='flex w-full items-center gap-4'>
+					<span className='text-xs'>{msToString(currentlyPlaying.data.progress_ms ?? 0)}</span>
+					<div className='h-1 w-full rounded-full bg-white/25'>
+						<div
+							className='h-1 rounded-full bg-white'
+							style={{ width: `${((currentlyPlaying.data.progress_ms ?? 0) / (currentlyPlaying.data.item?.duration_ms ?? 0)) * 100}%` }}
+						/>
+					</div>
+					<span className='text-xs'>{msToString(currentlyPlaying.data.item?.duration_ms ?? 0)}</span>
+				</div>
 			</div>
 		</div>
 	);
