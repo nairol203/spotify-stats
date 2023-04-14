@@ -16,7 +16,7 @@ export function msToString(ms: number) {
 	return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-export function calculateTopGenres (topArtists: SpotifyApi.UsersTopArtistsResponse | null) {
+export function calculateTopGenres(topArtists: SpotifyApi.UsersTopArtistsResponse | null) {
 	if (!topArtists) return null;
 
 	const allGenres = topArtists.items.reduce<string[]>((acc, artist) => [...acc, ...artist.genres], []);
@@ -29,4 +29,4 @@ export function calculateTopGenres (topArtists: SpotifyApi.UsersTopArtistsRespon
 		.sort((a, b) => b.count - a.count);
 
 	return topGenres;
-};
+}
