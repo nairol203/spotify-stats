@@ -17,13 +17,15 @@ export default function Home() {
 			<div className='2xl:col-span-2'>
 				<TopGenresCard />
 			</div>
-			<div className='flex flex-col gap-2'>
+			<div>
 				<NowPlayingCard />
+			</div>
+			{/* <div className='flex flex-col gap-2'>
 				<div className='flex items-center gap-2 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
 					<FontAwesomeIcon icon={faPersonDigging} height={20} width={20} />
 					<h2>More stats are work in progress!</h2>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }
