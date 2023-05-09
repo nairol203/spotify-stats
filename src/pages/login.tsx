@@ -11,10 +11,7 @@ export default function Login() {
 			<h1>Log in to your Spotify Stats</h1>
 			<span className='max-w-sm text-center'>Discover your top tracks and gain insights into your Spotify listening habits with Nairol Spotify Stats.</span>
 			<button className='flex items-center gap-2 rounded-md bg-white/25 p-2 duration-100 ease-in hover:bg-white/30' onClick={() => signIn('spotify')}>
-				{
-					// @ts-expect-error
-					<FontAwesomeIcon icon={faSpotify} height={25} width={25} />
-				}
+				<FontAwesomeIcon icon={faSpotify} height={25} width={25} />
 				<span>Continue with Spotify</span>
 			</button>
 		</div>
