@@ -23,6 +23,7 @@
 		"nextjs": "^0.0.3",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
+		"sharp": "^0.33.2",
 		"zod": "^3.19.1"
 	},
 	"devDependencies": {
