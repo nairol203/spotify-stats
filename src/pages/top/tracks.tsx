@@ -26,7 +26,7 @@ export default function Home() {
 					6 Months
 				</button>
 				<button className={`${range === 'long_term' ? 'underline' : 'opacity-80'} decoration-1 underline-offset-8 hover:underline`} onClick={() => setRange('long_term')}>
-					All time
+					12 Months
 				</button>
 			</div>
 			<div>
@@ -49,7 +49,7 @@ export default function Home() {
 										<h3 className='overflow-hidden text-ellipsis'>{track.name}</h3>
 										<div className='flex flex-wrap items-center gap-x-1'>
 											{track.explicit && (
-												<span className='rounded bg-slate-300 py-[1px] px-[5.5px] text-[10px] text-black' aria-label='Explicit'>
+												<span className='rounded bg-slate-300 px-[5.5px] py-[1px] text-[10px] text-black' aria-label='Explicit'>
 													E
 												</span>
 											)}

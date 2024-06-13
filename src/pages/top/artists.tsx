@@ -23,7 +23,7 @@ export default function Home() {
 					6 Months
 				</button>
 				<button className={`${range === 'long_term' ? 'underline' : 'opacity-80'} decoration-1 underline-offset-8 hover:underline`} onClick={() => setRange('long_term')}>
-					All time
+					12 Months
 				</button>
 			</div>
 			<div>

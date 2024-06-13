@@ -113,7 +113,7 @@ const TopTracksCard = () => {
 					onClick={() => setRange('long_term')}
 					className={`${range === 'long_term' ? 'bg-white/90 text-black' : 'hover:bg-white/90 hover:text-black'} rounded-full bg-white/20 p-1 px-2 duration-100 ease-in`}
 				>
-					All time
+					12 Months
 				</button>
 			</div>
 			<div>
@@ -188,7 +188,7 @@ const TopArtistsCard = () => {
 					onClick={() => setRange('long_term')}
 					className={`${range === 'long_term' ? 'bg-white/90 text-black' : 'hover:bg-white/90 hover:text-black'} rounded-full bg-white/20 p-1 px-2 duration-100 ease-in`}
 				>
-					All time
+					12 Months
 				</button>
 			</div>
 			<div>
@@ -264,7 +264,7 @@ const TopGenresCard = () => {
 					onClick={() => setRange('long_term')}
 					className={`${range === 'long_term' ? 'bg-white/90 text-black' : 'hover:bg-white/90 hover:text-black'} rounded-full bg-white/20 p-1 px-2 duration-100 ease-in`}
 				>
-					All time
+					12 Months
 				</button>
 			</div>
 			<div className='overflow-hidden text-ellipsis'>
