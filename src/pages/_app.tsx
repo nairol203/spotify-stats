@@ -6,9 +6,11 @@ import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import '../styles/globals.css';
+import PlausibleProvider from 'next-plausible';
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 	return (
+		<PlausibleProvider domain='spotify-stats.nairol.me' customDomain='https://analytics.home.nairol.me' selfHosted>
 		<SessionProvider session={session}>
 			<Head>
 				<link rel='icon' href='/logo.png' />
@@ -51,6 +53,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 				<Footer />
 			</div>
 		</SessionProvider>
+		</PlausibleProvider>
 	);
 }
 
