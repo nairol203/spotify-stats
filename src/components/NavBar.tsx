@@ -37,7 +37,7 @@ export default function NavBar() {
 			</div>
 			<div className='mt-auto hidden justify-center md:grid'>
 				<a href='https://nairol.me' target='_blank' rel='noreferrer' className='text-sm hover:underline '>
-					© 2023 nairol203
+					© 2025 nairol203
 				</a>
 				<div className='flex gap-1'>
 					<Link className='hover:underline' href='/imprint'>
