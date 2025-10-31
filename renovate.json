@@ -1,7 +1,4 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>nairol203/renovate-config",
-    "security:only-security-updates"
-  ]
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["github>nairol203/renovate-config", "security:only-security-updates"]
 }

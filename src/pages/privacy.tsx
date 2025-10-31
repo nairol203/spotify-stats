@@ -1,7 +1,7 @@
 export default function Privacy() {
 	return (
 		<div className='grid gap-4 rounded-xl bg-white/25 p-6 shadow-md backdrop-blur-lg'>
-			<div className="grid gap-2">
+			<div className='grid gap-2'>
 				<h1>Privacy Policy for Nairol Spotify Stats</h1>
 				<span>
 					We at Nairol Spotify Stats (https://spotify-stats.nairol.me/) understand the importance of privacy and are committed to protecting your personal data. This

@@ -30,7 +30,7 @@ export default function Home() {
 										<h3 className='overflow-hidden text-ellipsis whitespace-nowrap'>{item.track.name}</h3>
 										<div className='flex flex-wrap items-center gap-1'>
 											{item.track.explicit && (
-												<span className='rounded bg-slate-300 py-[1px] px-[5.5px] text-[10px] text-black' aria-label='Explicit'>
+												<span className='rounded bg-slate-300 px-[5.5px] py-[1px] text-[10px] text-black' aria-label='Explicit'>
 													E
 												</span>
 											)}

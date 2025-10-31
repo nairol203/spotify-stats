@@ -8,7 +8,7 @@ export default function NavBar() {
 	const router = useRouter();
 
 	return (
-		<nav className='background-blur-lg m-4 mb-0 flex flex-col gap-4 overflow-y-auto rounded-lg bg-white/25 py-2 px-3 shadow-md md:mr-0 md:mb-4 md:py-4'>
+		<nav className='background-blur-lg m-4 mb-0 flex flex-col gap-4 overflow-y-auto rounded-lg bg-white/25 px-3 py-2 shadow-md md:mb-4 md:mr-0 md:py-4'>
 			<Link href='/' className='flex items-center gap-3'>
 				<FontAwesomeIcon icon={faSpotify} height={50} width={50} />
 				<h1 className='hidden md:grid'>
