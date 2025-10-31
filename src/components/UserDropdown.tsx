@@ -24,15 +24,15 @@ export default function UserDropdown() {
 	if (!session || !session?.user.image) return <></>;
 
 	return (
-		<div className='fixed top-4 right-8 z-10 hidden md:grid' ref={dropdownRef}>
+		<div className='fixed right-8 top-4 z-10 hidden md:grid' ref={dropdownRef}>
 			<div className='relative'>
 				<button className='flex items-center gap-2 rounded-3xl bg-white p-0.5 pr-1.5 text-black shadow' onClick={() => setActive(!active)}>
 					<Image src={session?.user.image} height={30} width={30} alt='User Profile Picture' className='aspect-square rounded-full' />
-					<span className='max-w-[7rem] text-ellipsis overflow-hidden whitespace-nowrap'>{session.user.name}</span>
+					<span className='max-w-[7rem] overflow-hidden text-ellipsis whitespace-nowrap'>{session.user.name}</span>
 					<FontAwesomeIcon height={20} width={20} icon={active ? faCaretUp : faCaretDown} />
 				</button>
 				{active && (
-					<div className='absolute top-10 right-0 flex w-44 flex-col rounded bg-white p-1 text-black shadow'>
+					<div className='absolute right-0 top-10 flex w-44 flex-col rounded bg-white p-1 text-black shadow'>
 						<a
 							onClick={() => setActive(false)}
 							className='flex items-center justify-between rounded px-3 py-2 hover:bg-black/10'
